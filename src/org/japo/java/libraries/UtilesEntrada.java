@@ -107,6 +107,39 @@ public class UtilesEntrada {
         return dato;
     }
 
+// Devuelve un caracter introducido por teclado
+    public static final char leerOpcion(String opciones, String msgUsr, String msgErr) {
+        // Dato a introducir
+        char dato = 0;
+
+        // Proceso de lectura
+        boolean lecturaOK = true;
+        do {
+            try {
+                // Entrada dato
+                System.out.print(msgUsr);
+                dato = SCN.nextLine().charAt(0);
+                if (opciones.contains(dato + "")) {
+                    // Marca el semáforo a false si contiene el dato que queremos
+                    lecturaOK = false;
+                } else {
+                    System.out.println(msgErr);
+                }
+
+            } catch (Exception e) {
+                System.out.println(msgErr);
+            }
+        } while (lecturaOK);
+
+        // Devolver dato
+        return dato;
+    }
+
+    public static final String leerTexto(String msgUsr) {
+        System.out.print(msgUsr);
+        return SCN.nextLine();
+    }
+
     // Devuelve un caracter de control de DNI
     public static final char leerControlDNI(String msgUsr, String msgErr) {
         return leerCaracter(msgUsr, msgErr);
